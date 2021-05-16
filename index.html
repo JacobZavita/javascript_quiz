@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <div class=" row bg-light p-5 rounded-lg m-3">
+      <h1 class="display-4">Code Quiz</h1>
+      <p class="lead">This is a simple code quiz to test your javascript fundamentals.</p>
+      <hr class="my-4">
+      <p id="time"></p>
+      <p id="result"></p>
+      <form id="scoreForm" class="hidden">
+        <div class="mb-3">
+          <label for="initials" class="form-label">Initials</label>
+          <input type="text" class="form-control" name="initials" id="initials">
+        </div>
+        <button class="btn btn-primary" id="submitScore">Submit Score</button>
+      </form>
+      <button id="startQuiz" class="btn btn-success btn-lg">Start Quiz</button>
+    </div>
+    <div id="question"class="row">
+
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script>
+    let score = 0
+    let current = 0
+    let time = 10
+    let timer
+    let questions = [
+      {
+        question: '2 + 2',
+        options: ['4', '8', '3', '5'],
+        answer: '4'
+      },
+      {
+        question: '10 - 9',
+        options: ['0', '19', '1', '-1'],
+        answer: '1'
+      },
+      {
+        question: '3 * 4',
+        options: ['9', '7', '12', '14'],
+        answer: '12'
+      },
+      {
+        question: '6 * 7',
+        options: ['33', '42', '49', '45'],
+        answer: '42'
+      },
+      {
+        question: '8^2',
+        options: ['56', '72', '48', '16'],
+        answer: '72'
+      },
+    ]
+
+    const endGame = () => {
+      document.getElementById('question').innerHTML = ''
+      document.getElementById('result').textContent = `Score: ${score}`
+      document.getElementById('scoreForm').className = ''
+    }
+
+    const renderQuestion = () => {
+      document.getElementById('question').innerHTML = ''
+      let qElem = document.createElement('div')
+      qElem.innerHTML = `
+        <h3>Question: ${questions[current].question}</h3>
+        <ul class="list-group">
+          <li class="list-group-item choice" data-value="${questions[current].options[0]}">a) ${questions[current].options[0]}</li>
+          <li class="list-group-item choice" data-value="${questions[current].options[1]}">b) ${questions[current].options[1]}</li>
+          <li class="list-group-item choice" data-value="${questions[current].options[2]}">c) ${questions[current].options[2]}</li>
+          <li class="list-group-item choice" data-value="${questions[current].options[3]}">d) ${questions[current].options[3]}</li>
+        </ul>
+        `
+      document.getElementById('question').append(qElem)
+    }
+
+    document.getElementById('startQuiz').addEventListener('click', () => {
+      document.getElementById('startQuiz').remove()
+      timer = setInterval(() => {
+        document.getElementById('time').textContent = `Time Left: ${time}`
+        time--
+        if (time < 0) {
+          endGame()
+          clearInterval(timer)
+        }
+      }, 1000);
+      renderQuestion()
+    })
+
+    document.addEventListener('click', event => {
+      if (event.target.classList.contains('choice')) {
+        if (event.target.dataset.value === questions[current].answer) {
+          score++
+          } else {
+            console.log('wrong')
+            // we'll come back to setting what happens if they get it wrong later so keep this.
+          }
+          current++
+          if (current >= questions.length) {
+            endGame()
+            clearInterval(timer)
+          } else {
+          renderQuestion()
+        }
+      }
+    })
+
+    document.getElementById('submitScore').addEventListener('click', event => {
+      event.preventDefault()
+      let initials = document.getElementById('initials').value
+      scores = JSON.parse(localStorage.getItem('scores')) || []
+      scores.push({ initials, score })
+      localStorage.setItem('scores', JSON.stringify(scores))
+      
+      scores.sort((a, b) => b.score - a.score)
+      
+      let tableElem = document.createElement('table')
+      tableElem.className = 'table'
+      tableElem.innerHTML = `
+      <thead>
+        <tr>
+          <th scope="col">Initials</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      `
+      let tableBody = document.createElement('tbody')
+
+      for (let i = 0; i < scores.length; i++) {
+        tableBody.innerHTML += `
+          <tr>
+            <td>${scores[i].initials}</td>
+            <td>${scores[i].score}</td>
+          </tr>
+        `
+        tableElem.append(tableBody)
+        document.getElementById('question').append(tableElem)
+      }
+    })
+  </script>
+</body>
+</html>
