@@ -42,7 +42,7 @@ const renderQuestion = () => {
   document.getElementById('question').innerHTML = ''
   let qElem = document.createElement('div')
   qElem.innerHTML = `
-        <h3>Question: ${questions[current].question}</h3>
+        <h3>Question ${current+1}: ${questions[current].question}</h3>
         <ul class="list-group">
           <li class="list-group-item choice" data-value="${questions[current].options[0]}">a) ${questions[current].options[0]}</li>
           <li class="list-group-item choice" data-value="${questions[current].options[1]}">b) ${questions[current].options[1]}</li>
@@ -69,9 +69,15 @@ document.getElementById('startQuiz').addEventListener('click', () => {
 
 // This event listener for when the user clicks which multiple choice answer they think is the correct one checks two conditions. 1, it checks if the user chose the correct answer. If correct, it increases the score by one. If incorrect, it reduces the remaining time by five seconds. It also checks the timer. If it reaches zero, it runs the endGame function declared and described above and clears the timer. If there is still time remaining, it renders the next question once the user makes their choice.
 document.addEventListener('click', event => {
+  document.getElementById('right-wrong').innerHTML = ''
   if (event.target.classList.contains('choice')) {
     if (event.target.dataset.value === questions[current].answer) {
       score++
+      let right = document.createElement('div')
+      right.innerHTML = `
+      <span class="badge bg-success">Success</span>
+      `
+      document.getElementById('right-wrong').append(right)
     } else {
       time -= 5
     }
