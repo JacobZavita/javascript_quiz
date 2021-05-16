@@ -30,12 +30,14 @@ let questions = [
   }
 ]
 
+// This function establishes what happens at the end of the game. It clears the last displayed question, displays their final score, and reveals the hidden scoreForm that let's them log their score with their initials.
 const endGame = () => {
   document.getElementById('question').innerHTML = ''
   document.getElementById('result').textContent = `Score: ${score}`
   document.getElementById('scoreForm').className = ''
 }
 
+// This function renders a question. First it clears the previous displayed question. Then it creates a div and fills that div with the list of potential answers. As a multiple-choice quiz it displays four options one of which is correct.
 const renderQuestion = () => {
   document.getElementById('question').innerHTML = ''
   let qElem = document.createElement('div')
@@ -51,6 +53,7 @@ const renderQuestion = () => {
   document.getElementById('question').append(qElem)
 }
 
+// This event listener for when the user clicks the "Start Quiz." It does three things: 1, clears the button from view. 2, starts and displays the timer. 3, renders the question.
 document.getElementById('startQuiz').addEventListener('click', () => {
   document.getElementById('startQuiz').remove()
   timer = setInterval(() => {
@@ -64,15 +67,13 @@ document.getElementById('startQuiz').addEventListener('click', () => {
   renderQuestion()
 })
 
+// This event listener for when the user clicks which multiple choice answer they think is the correct one checks two conditions. 1, it checks if the user chose the correct answer. If correct, it increases the score by one. If incorrect, it reduces the remaining time by five seconds. It also checks the timer. If it reaches zero, it runs the endGame function declared and described above and clears the timer. If there is still time remaining, it renders the next question once the user makes their choice.
 document.addEventListener('click', event => {
   if (event.target.classList.contains('choice')) {
     if (event.target.dataset.value === questions[current].answer) {
       score++
     } else {
       time -= 5
-      // console.log('wrong')
-      // we'll come back to setting what happens if they get it wrong later so keep this.
-      // I think this is where I'll set the conditions around the time reducing when they get something wrong.
     }
     current++
     if (current >= questions.length) {
@@ -84,6 +85,7 @@ document.addEventListener('click', event => {
   }
 })
 
+// This event listener allows the user to submit their score with their initials to a leaderboard at the end of their game. It saves this data to localStorage, so users would need to play on the same device to see how their scores compare. Once submitted, it displays their score on the leaderboard in ascending order.
 document.getElementById('submitScore').addEventListener('click', event => {
   event.preventDefault()
   let initials = document.getElementById('initials').value
