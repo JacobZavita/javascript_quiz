@@ -33,7 +33,7 @@ let questions = [
 // This function establishes what happens at the end of the game. It clears the last displayed question, displays their final score, and reveals the hidden scoreForm that let's them log their score with their initials.
 const endGame = () => {
   document.getElementById('question').innerHTML = ''
-  document.getElementById('result').textContent = `Score: ${score}`
+  document.getElementById('result').textContent = `Score: ${score}/${questions.length}`
   document.getElementById('scoreForm').className = ''
 }
 
@@ -75,11 +75,16 @@ document.addEventListener('click', event => {
       score++
       let right = document.createElement('div')
       right.innerHTML = `
-      <span class="badge bg-success">Success</span>
+      <h5>Last answer: <span class="badge bg-success">Correct!</span></h5>
       `
       document.getElementById('right-wrong').append(right)
     } else {
       time -= 5
+      let wrong = document.createElement('div')
+      wrong.innerHTML = `
+      <h5>Last answer: <span class="badge bg-danger">Wrong</span> you lost five seconds!</h5>
+      `
+      document.getElementById('right-wrong').append(wrong)
     }
     current++
     if (current >= questions.length) {
