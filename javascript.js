@@ -1,7 +1,10 @@
+// Establishing game variables
 let score = 0
 let current = 0
 let time = 75
 let timer
+
+// Object containing all questions:
 let questions = [
   {
     question: 'What is NOT a datatype of javascript',
