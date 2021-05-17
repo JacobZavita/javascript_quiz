@@ -77,7 +77,7 @@ let questions = [
     question: '',
     options: '',
     answer: ''
-  },
+  }
 ]
 
 // This function establishes what happens at the end of the game. It clears the last displayed question, displays their final score, and reveals the hidden scoreForm that let's them log their score with their initials.
