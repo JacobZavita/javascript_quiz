@@ -57,7 +57,27 @@ let questions = [
     question: 'You can turn an array into a string using',
     options: ['array.stringify', 'array.push', 'array.parse', 'array.join'],
     answer: 'array.join'
-  }
+  },
+  {
+    question: 'Functions are mainly used to...',
+    options: 'repeat a series of steps that can be called later', 'check for specific conditions', 'hold a bundle of data', 'suppress objects',
+    answer: 'repeat a series of steps that can be called later'
+  },
+  {
+    question: 'Recursive logic is when...',
+    options: 'the logic causes a specific event to happen', 'logic creates truthy or falsey statements', 'the logic calls itself creating an infinite loop', 'the logic references a variable in an unlinked file'
+    answer: 'the logic calls itself creating an infinite loop'
+  },
+  {
+    question: '',
+    options: '',
+    answer: ''
+  },
+  {
+    question: '',
+    options: '',
+    answer: ''
+  },
 ]
 
 // This function establishes what happens at the end of the game. It clears the last displayed question, displays their final score, and reveals the hidden scoreForm that let's them log their score with their initials.
