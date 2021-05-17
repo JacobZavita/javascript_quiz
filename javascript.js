@@ -1,6 +1,6 @@
 let score = 0
 let current = 0
-let time = 30
+let time = 60
 let timer
 let questions = [
   {
