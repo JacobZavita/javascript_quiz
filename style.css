@@ -3,6 +3,10 @@
   margin-bottom: 2rem;
   background-color: #e9ecef;
   border-radius: .3rem;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
 }
 
 .hidden {

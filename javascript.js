@@ -15,7 +15,7 @@ let questions = [
   },
   {
     question: 'The following is best practice when using variables',
-    options: ['Just use var', 'Use const and let interchangeably', 'Primarily use var but also use const and let when necessary', 'Either just use var or only use const and let'],
+    options: ['Just use var', 'Use const and let interchangeably since they mean the same thing', 'Primarily use var but also use const and let when necessary', 'Either just use var or only use const and let'],
     answer: 'Either just use var or only use const and let'
   },
   {
@@ -60,24 +60,24 @@ let questions = [
   },
   {
     question: 'Functions are mainly used to...',
-    options: 'repeat a series of steps that can be called later', 'check for specific conditions', 'hold a bundle of data', 'suppress objects',
+    options: ['repeat a series of steps that can be called later', 'check for specific conditions', 'hold a bundle of data', 'suppress objects'],
     answer: 'repeat a series of steps that can be called later'
   },
   {
     question: 'Recursive logic is when...',
-    options: 'the logic causes a specific event to happen', 'logic creates truthy or falsey statements', 'the logic calls itself creating an infinite loop', 'the logic references a variable in an unlinked file'
+    options: ['the logic causes a specific event to happen', 'logic creates truthy or falsey statements', 'the logic calls itself creating an infinite loop', 'the logic references a variable in an unlinked file'],
     answer: 'the logic calls itself creating an infinite loop'
   },
-  {
-    question: '',
-    options: '',
-    answer: ''
-  },
-  {
-    question: '',
-    options: '',
-    answer: ''
-  }
+  // {
+  //   question: '',
+  //   options: '',
+  //   answer: ''
+  // },
+  // {
+  //   question: '',
+  //   options: '',
+  //   answer: ''
+  // }
 ]
 
 // This function establishes what happens at the end of the game. It clears the last displayed question, displays their final score, and reveals the hidden scoreForm that let's them log their score with their initials.
