@@ -4,29 +4,59 @@ let time = 30
 let timer
 let questions = [
   {
-    question: '2 + 2',
-    options: ['4', '8', '3', '5'],
-    answer: '4'
+    question: 'What is NOT a datatype of javascript',
+    options: ['Numbers', 'Arrays', 'Booleans', 'Strings'],
+    answer: 'Arrays'
   },
   {
-    question: '10 - 9',
-    options: ['0', '19', '1', '-1'],
-    answer: '1'
+    question: 'This is the "not" operator',
+    options: ['=/=', '*', '!', '-='],
+    answer: '!'
   },
   {
-    question: '3 * 4',
-    options: ['9', '7', '12', '14'],
-    answer: '12'
+    question: 'The following is best practice when using variables',
+    options: ['Just use var', 'Use const and let interchangeably', 'Primarily use var but also use const and let when necessary', 'Either just use var or only use const and let'],
+    answer: 'Either just use var or only use const and let'
   },
   {
-    question: '6 * 7',
-    options: ['33', '42', '49', '45'],
-    answer: '42'
+    question: 'Semicolons are okay to use...',
+    options: ['At the end of every line', 'only in for loops', 'at the end of each function', 'to declare an array'],
+    answer: 'only in for loops'
   },
   {
-    question: '8^2',
-    options: ['56', '72', '48', '16'],
-    answer: '72'
+    question: 'template literals are for',
+    options: ['inserting the value of a variable', 'connecting arrays to functions', 'expressing a code template', 'searching code comments'],
+    answer: 'inserting the value of a variable'
+  },
+  {
+    question: 'If you want to check for specific conditions, you would use a:',
+    options: ['while loop', 'conditional array', 'if statement', 'prompt'],
+    answer: 'if statement'
+  },
+  {
+    question: 'A Switch Case is used to',
+    options: ['check for the condition of one single variable', 'check for the condition of multiple variables', 'end a line of code', 'confuse the developer'],
+    answer: 'check for the condition of one single variable'
+  },
+  {
+    question: 'If you wanted to do one thing when a comparison is true and another when it is false, you could use a:',
+    options: ['Object', 'getElementById', 'turnary', 'for loop'],
+    answer: 'turnary'
+  },
+  {
+    question: 'If you want to run the same sequence of code multiple times you could use a',
+    options: ['Function', 'For loop', 'A or B', 'Template literal'],
+    answer: 'A or B'
+  },
+  {
+    question: 'Arrays are:',
+    options: ['collections of data', 'indicated by {}', 'limited to numbers', 'how you hold a sequence of repeatable code'],
+    answer: 'collections of data'
+  },
+  {
+    question: 'You can turn an array into a string using',
+    options: ['array.stringify', 'array.push', 'array.parse', 'array.join'],
+    answer: 'array.join'
   }
 ]
 
