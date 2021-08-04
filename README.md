@@ -32,4 +32,4 @@ User is brought to a page with a "Start Quiz" button.
 
 When the button is clicked a timer starts at 75 seconds along with the first multiple-choice question. As the user selects their answer by clicking on the one they think is correct, the user is given notice if their answer was correct or not. If correct, their score goes up by one (score is only displayed at the end of the round). If incorrect, not points are docked but five seconds is deleted from the timer.
 
-# Link: https://alwayssmellitfirst.github.io/javascript_quiz/
+# Link: https://jacobzavita.github.io/javascript_quiz/
